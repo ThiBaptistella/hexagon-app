@@ -31,3 +31,15 @@ import './index.css';
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
 import './app';
+
+declare global {
+  interface Window {
+    api: any;
+  }
+}
+
+window.api.sendPing();
+
+window.api.listen((msg: any) => {
+  console.log(msg);
+})
