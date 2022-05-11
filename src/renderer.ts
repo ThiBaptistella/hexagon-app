@@ -40,10 +40,7 @@ declare global {
 
 window.api.sendPing();
 
-window.api.listen((msg: any) => {
-  console.log(msg);
-})
-
 window.api.apiCall((data: any) => {
-  console.log(data);
+  console.log("renderer", data)
+  return data
 })

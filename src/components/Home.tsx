@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-// interface Resp {
-//   test: [],
-// }
-
 function Home() {
   const [test, setTest] = useState([] as any[]);
 
   const funcTest = () => {
-    window.api.listen((data: any) => {
+    window.api.apiCall((data: any) => {
       setTest(data);
+      console.log("funcTest", data)
     })
   }
 
@@ -17,7 +14,7 @@ function Home() {
     funcTest()
   });
 
-  console.log("test", test)
+  console.log("outside funcTest", test)
 
   return (
     <>
