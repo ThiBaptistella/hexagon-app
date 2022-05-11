@@ -43,3 +43,7 @@ window.api.sendPing();
 window.api.listen((msg: any) => {
   console.log(msg);
 })
+
+window.api.apiCall((data: any) => {
+  console.log(data);
+})

@@ -6,5 +6,10 @@ contextBridge.exposeInMainWorld('api', {
     if(typeof callback === 'function') {
       callback(msg);
     }
-  })
+  }),
+  apiCall: (callback: (arg0: any) => void) => ipcRenderer.on('api', (event, data) => {
+    if(typeof callback === 'function') {
+      callback(data);
+    }
+  }),
 })
