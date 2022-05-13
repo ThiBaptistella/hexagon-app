@@ -1,9 +1,13 @@
-export const useApiCallHooks = (): any => {
-  let arr: any = [{}];
-  window.api.apiCall((data: any) => {
-    return arr.push(data);
-  })
-  console.log("arr", arr)
-  return arr
-};
+import React, { useEffect, useState } from "react";
 
+export const useApiCallHooks = (): any => {
+
+  const [list, setList] = useState()
+  
+  useEffect(() => {
+    window.api.apiCall((data: any) => {
+      setList(data)
+    })
+  },[])
+  return list
+};

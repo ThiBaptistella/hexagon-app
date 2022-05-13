@@ -12,7 +12,7 @@ function Home() {
         {useApiCall &&
           useApiCall.length > 0 &&
           useApiCall.map((t: any, i: number) => {
-            return <li key={i}>{t.title}</li>;
+            return <li key={i}>{t.name}</li>;
           })}
       </ul>
     </>
