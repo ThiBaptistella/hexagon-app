@@ -59,6 +59,7 @@ app.on("activate", () => {
 // code. You can also put them in separate files and import them here.
 
 ipcMain.on("api", (event, data) => {  
+  
   const formatSize = (size: number) => {
     var i = Math.floor(Math.log(size) / Math.log(1024))
     return (
@@ -67,15 +68,19 @@ ipcMain.on("api", (event, data) => {
       ['B', 'kB', 'MB', 'GB', 'TB'][i]
     )
   }
+
   let path = app.getAppPath()
+  
   const p = fs.readdirSync(path).map((file: any) => {
     const stats = fs.statSync(pathModule.join(path, file));
     return {
+      path: path,
       name: file,
       size: stats.isFile() ? formatSize(stats.size ?? 0) : null,
       directory: stats.isDirectory(),
     };
   });
+  
   event.reply("api", p);
 });
 
